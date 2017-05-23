@@ -6,6 +6,8 @@
 package logica;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Pena;
 import persistencia.PenaJpaController;
 
@@ -15,10 +17,10 @@ import persistencia.PenaJpaController;
  */
 public class PenaLogica {
     PenaJpaController PenaDAO;
-    
-    public PenaLogica(){
+       public PenaLogica(){
        PenaDAO = new PenaJpaController();
     }
+ 
     
     public List<Pena> listarPenas(){
         return PenaDAO.findPenaEntities();
@@ -27,5 +29,14 @@ public class PenaLogica {
     public Pena BuscarPena(Integer IDPena){ 
         return PenaDAO.findPena(IDPena);
     }
+    
+    public void ModificarPena(Pena pena){
+        try {
+            PenaDAO.edit(pena);
+        } catch (Exception ex) {
+            Logger.getLogger(PenaLogica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
 }
