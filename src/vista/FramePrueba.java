@@ -11,10 +11,19 @@ package vista;
  */
 public class FramePrueba extends javax.swing.JFrame {
 
+    //PanelRegistrarInformacion panel;
+    PanelConsultarInformacion panelConsultar;
     /**
      * Creates new form FramePrueba
      */
     public FramePrueba() {
+        //panel = new PanelRegistrarInformacion();
+        panelConsultar = new PanelConsultarInformacion();
+        panelConsultar.setBounds(0, 0, 650, 450);
+        panelConsultar.setVisible(true);
+        //panel.setBounds(0, 0, 650, 450);
+        //panel.setVisible(true);
+        this.add(panelConsultar);
         initComponents();
     }
 
@@ -33,11 +42,11 @@ public class FramePrueba extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         pack();
