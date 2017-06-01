@@ -37,4 +37,8 @@ public class PermisosalidaLogica {
             Logger.getLogger(PermisosalidaLogica.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
+    
+    public void RegistrarPermisoSalida(Permisosalida permiso_salida){
+        PermisosalidaDAO.create(permiso_salida);
+    }
 }

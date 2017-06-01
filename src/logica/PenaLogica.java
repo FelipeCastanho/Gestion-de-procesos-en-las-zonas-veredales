@@ -38,5 +38,11 @@ public class PenaLogica {
         }
     }
     
+    public void RegistrarPena(Pena pena){
+        PenaDAO.create(pena);
+    }
+    
+    
+    
     
 }
