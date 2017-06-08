@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -17,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -34,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Zonaveredal.findByUbicacionZonaVeredal", query = "SELECT z FROM Zonaveredal z WHERE z.ubicacionZonaVeredal = :ubicacionZonaVeredal")
     , @NamedQuery(name = "Zonaveredal.findByCantidadMaximaResidentes", query = "SELECT z FROM Zonaveredal z WHERE z.cantidadMaximaResidentes = :cantidadMaximaResidentes")})
 public class Zonaveredal implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,7 +70,9 @@ public class Zonaveredal implements Serializable {
     }
 
     public void setIdZonaVeredal(Integer idZonaVeredal) {
+        Integer oldIdZonaVeredal = this.idZonaVeredal;
         this.idZonaVeredal = idZonaVeredal;
+        changeSupport.firePropertyChange("idZonaVeredal", oldIdZonaVeredal, idZonaVeredal);
     }
 
     public String getNombreZonaVeredal() {
@@ -72,7 +80,9 @@ public class Zonaveredal implements Serializable {
     }
 
     public void setNombreZonaVeredal(String nombreZonaVeredal) {
+        String oldNombreZonaVeredal = this.nombreZonaVeredal;
         this.nombreZonaVeredal = nombreZonaVeredal;
+        changeSupport.firePropertyChange("nombreZonaVeredal", oldNombreZonaVeredal, nombreZonaVeredal);
     }
 
     public String getUbicacionZonaVeredal() {
@@ -80,7 +90,9 @@ public class Zonaveredal implements Serializable {
     }
 
     public void setUbicacionZonaVeredal(String ubicacionZonaVeredal) {
+        String oldUbicacionZonaVeredal = this.ubicacionZonaVeredal;
         this.ubicacionZonaVeredal = ubicacionZonaVeredal;
+        changeSupport.firePropertyChange("ubicacionZonaVeredal", oldUbicacionZonaVeredal, ubicacionZonaVeredal);
     }
 
     public Integer getCantidadMaximaResidentes() {
@@ -88,7 +100,9 @@ public class Zonaveredal implements Serializable {
     }
 
     public void setCantidadMaximaResidentes(Integer cantidadMaximaResidentes) {
+        Integer oldCantidadMaximaResidentes = this.cantidadMaximaResidentes;
         this.cantidadMaximaResidentes = cantidadMaximaResidentes;
+        changeSupport.firePropertyChange("cantidadMaximaResidentes", oldCantidadMaximaResidentes, cantidadMaximaResidentes);
     }
 
     @XmlTransient
@@ -132,6 +146,14 @@ public class Zonaveredal implements Serializable {
     @Override
     public String toString() {
         return "modelo.Zonaveredal[ idZonaVeredal=" + idZonaVeredal + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

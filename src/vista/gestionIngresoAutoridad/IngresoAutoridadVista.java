@@ -58,13 +58,12 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        ProyectoDSIIPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ProyectoDSIIPU").createEntityManager();
-        zonaveredalQuery = java.beans.Beans.isDesignTime() ? null : ProyectoDSIIPUEntityManager.createQuery("SELECT z.nombreZonaVeredal FROM Zonaveredal z");
-        zonaveredalList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : zonaveredalQuery.getResultList();
         jLabelTituloGestionIngresos2 = new javax.swing.JLabel();
+        ProyectoDSIIPUEntityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ProyectoDSIIPU").createEntityManager();
+        zonaveredalQuery = java.beans.Beans.isDesignTime() ? null : ProyectoDSIIPUEntityManager0.createQuery("SELECT z.nombreZonaVeredal FROM Zonaveredal z");
+        zonaveredalList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : zonaveredalQuery.getResultList();
         jLabelTituloGestionIngresos = new javax.swing.JLabel();
         jLabelZonaVeredal = new javax.swing.JLabel();
-        jComboBoxZonasVeredales = new javax.swing.JComboBox<>();
         jLabelIdentificadorAutoridad = new javax.swing.JLabel();
         jTextFieldIdentificarAutoridad = new javax.swing.JTextField();
         jLabelNombreAutoridad = new javax.swing.JLabel();
@@ -78,14 +77,15 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabelFechaIngresoNombre = new javax.swing.JLabel();
         jLabelFechaSalidaNombre = new javax.swing.JLabel();
-        jDateChooserIngreso = new com.toedter.calendar.JDateChooser();
-        jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldFechaIngreso = new javax.swing.JTextField();
         jTextFieldFechaSalida = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jDateChooserIngreso = new com.toedter.calendar.JDateChooser();
+        jDateChooserSalida = new com.toedter.calendar.JDateChooser();
+        jComboBoxZonasVeredales = new javax.swing.JComboBox<>();
 
         jLabelTituloGestionIngresos2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTituloGestionIngresos2.setText(" a las zonas veredales");
@@ -96,16 +96,6 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
         jLabelTituloGestionIngresos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabelZonaVeredal.setText("Zona veredal: ");
-
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, zonaveredalQuery, eLProperty, jComboBoxZonasVeredales);
-        bindingGroup.addBinding(jComboBoxBinding);
-
-        jComboBoxZonasVeredales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxZonasVeredalesActionPerformed(evt);
-            }
-        });
 
         jLabelIdentificadorAutoridad.setText("Identificador de autoridad:");
 
@@ -169,6 +159,12 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
 
         jLabel4.setText("Consultas:");
 
+        jComboBoxZonasVeredales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, zonaveredalQuery, eLProperty, jComboBoxZonasVeredales);
+        bindingGroup.addBinding(jComboBoxBinding);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,27 +191,26 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
                                 .addComponent(jButtonRegistrarIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooserSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooserIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                                     .addComponent(jTextFieldFechaSalida, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldNombreAutoridad, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextFieldIdentificarAutoridad, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jComboBoxZonasVeredales, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(1, 1, 1))
-                                    .addComponent(jTextFieldFechaIngreso)))))
+                                    .addComponent(jTextFieldFechaIngreso)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jComboBoxZonasVeredales, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldNombreAutoridad)
+                                            .addComponent(jTextFieldIdentificarAutoridad))
+                                        .addGap(1, 1, 1))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jDateChooserIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                    .addComponent(jDateChooserSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -231,8 +226,8 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
                 .addComponent(jLabelTituloGestionIngresos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelZonaVeredal)
                     .addComponent(jComboBoxZonasVeredales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -264,14 +259,14 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelFechaIngresoNombre)
+                    .addComponent(jDateChooserIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooserIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFechaIngresoNombre))
+                    .addComponent(jLabelFechaSalidaNombre)
+                    .addComponent(jDateChooserSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooserSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFechaSalidaNombre))
-                .addGap(22, 22, 22)
                 .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -280,10 +275,6 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
 
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBoxZonasVeredalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxZonasVeredalesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxZonasVeredalesActionPerformed
 
     private void jTextFieldIdentificarAutoridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdentificarAutoridadActionPerformed
         // TODO add your handling code here:
@@ -398,7 +389,7 @@ public class IngresoAutoridadVista extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager ProyectoDSIIPUEntityManager;
+    private javax.persistence.EntityManager ProyectoDSIIPUEntityManager0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonRegistrarIngreso;

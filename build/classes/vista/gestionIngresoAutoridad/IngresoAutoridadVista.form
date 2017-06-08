@@ -2,7 +2,13 @@
 
 <Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
-    <Component class="javax.persistence.EntityManager" name="ProyectoDSIIPUEntityManager">
+    <Component class="javax.swing.JLabel" name="jLabelTituloGestionIngresos2">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value=" a las zonas veredales"/>
+      </Properties>
+    </Component>
+    <Component class="javax.persistence.EntityManager" name="ProyectoDSIIPUEntityManager0">
       <Properties>
         <Property name="persistenceUnit" type="java.lang.String" value="ProyectoDSIIPU"/>
       </Properties>
@@ -11,11 +17,11 @@
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT z FROM Zonaveredal z"/>
         <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="ProyectoDSIIPUEntityManager"/>
+          <ComponentRef name="ProyectoDSIIPUEntityManager0"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="java.beans.Beans.isDesignTime() ? null : ProyectoDSIIPUEntityManager.createQuery(&quot;SELECT z.nombreZonaVeredal FROM Zonaveredal z&quot;)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="java.beans.Beans.isDesignTime() ? null : ProyectoDSIIPUEntityManager0.createQuery(&quot;SELECT z.nombreZonaVeredal FROM Zonaveredal z&quot;)"/>
       </AuxValues>
     </Component>
     <Component class="java.util.List" name="zonaveredalList">
@@ -27,12 +33,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;modelo.Zonaveredal&gt;"/>
       </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelTituloGestionIngresos2">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value=" a las zonas veredales"/>
-      </Properties>
     </Component>
   </NonVisualComponents>
   <AuxValues>
@@ -76,32 +76,31 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jDateChooserSalida" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jDateChooserIngreso" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="148" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane1" alignment="1" pref="174" max="32767" attributes="0"/>
                                   <Component id="jTextFieldFechaSalida" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextFieldFechaIngreso" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jComboBoxZonasVeredales" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jTextFieldNombreAutoridad" alignment="1" max="32767" attributes="0"/>
                                           <Component id="jTextFieldIdentificarAutoridad" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jComboBoxZonasVeredales" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jTextFieldFechaIngreso" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jDateChooserIngreso" pref="175" max="32767" attributes="0"/>
+                                  <Component id="jDateChooserSalida" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -126,10 +125,10 @@
               <Component id="jLabelTituloGestionIngresos" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelZonaVeredal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBoxZonasVeredales" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabelZonaVeredal" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxZonasVeredales" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -166,16 +165,16 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" pref="14" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jDateChooserIngreso" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelFechaIngresoNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabelFechaIngresoNombre" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDateChooserIngreso" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabelFechaSalidaNombre" min="-2" max="-2" attributes="0"/>
                   <Component id="jDateChooserSalida" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelFechaSalidaNombre" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -198,17 +197,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Zona veredal: "/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxZonasVeredales">
-      <BindingProperties>
-        <BindingProperty name="elements" source="zonaveredalQuery" sourcePath="${resultList}" target="jComboBoxZonasVeredales" targetPath="elements" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxZonasVeredalesActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelIdentificadorAutoridad">
       <Properties>
@@ -290,10 +278,6 @@
         <Property name="text" type="java.lang.String" value="Fecha de salida:"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserIngreso">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserSalida">
-    </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -317,6 +301,28 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultas:"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserIngreso">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserSalida">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxZonasVeredales">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="elements" source="zonaveredalQuery" sourcePath="${resultList}" target="jComboBoxZonasVeredales" targetPath="elements" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
