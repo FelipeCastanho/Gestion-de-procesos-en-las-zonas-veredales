@@ -16,6 +16,7 @@ public class AutoridadLogica {
         return (ArrayList<Autoridad>) autoridadDAO.findAutoridadEntities();
     }
     public void registrarAutoridad(Autoridad autoridad) throws Exception{
+        autoridad.getNombreAutoridad().charAt(0);
         autoridadDAO.create(autoridad);
     }
 }

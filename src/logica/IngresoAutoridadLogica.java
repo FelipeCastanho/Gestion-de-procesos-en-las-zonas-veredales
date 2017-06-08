@@ -3,6 +3,8 @@ package logica;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import modelo.Autoridad;
 import modelo.Autoridadingresazonaveredal;
 import persistencia.AutoridadingresazonaveredalJpaController;
 
@@ -13,21 +15,51 @@ public class IngresoAutoridadLogica {
         ingresoAutoridadDAO = new AutoridadingresazonaveredalJpaController();
     }
     public void registrarIngresoAutoridad(Autoridadingresazonaveredal ingreso) throws Exception{
+        //if(ingreso.getIdAutoridad().getIdAutoridad() == null)
         Calendar calendar = Calendar.getInstance();
-        Date fecha = new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+        Date fecha = calendar.getTime();
         ingreso.setFechaIngreso(fecha);
         ingresoAutoridadDAO.create(ingreso);
     }
-    public void registrarSalidaAutoridad(Autoridadingresazonaveredal salida) throws Exception{
-        Calendar calendar = Calendar.getInstance();
-        Date fecha = new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
-        salida.setFechaSalida(fecha);
-        ingresoAutoridadDAO.edit(salida);
+    public void registrarSalidaAutoridad(Autoridad autoridad) throws Exception{
+        Autoridadingresazonaveredal salida = buscarIngresoPorAutoridad(autoridad);
+        if(salida == null) throw new Exception("No se encontro el ingreso en la base de datos");
+        else{
+            Calendar calendar = Calendar.getInstance();
+            Date fecha = calendar.getTime();
+            salida.setFechaIngreso(fecha);
+            salida.setFechaSalida(fecha);
+            ingresoAutoridadDAO.edit(salida);
+        }
     }
-    public ArrayList<Autoridadingresazonaveredal> buscarIngresoAutoridad(){
-        return (ArrayList<Autoridadingresazonaveredal>) ingresoAutoridadDAO.findAutoridadingresazonaveredalEntities();
+    public List<Autoridadingresazonaveredal> buscarIngresoAutoridad(){
+        return  ingresoAutoridadDAO.findAutoridadingresazonaveredalEntities();
     }
     public Autoridadingresazonaveredal buscarIngresoAutoridad(int id){
         return ingresoAutoridadDAO.findAutoridadingresazonaveredal(id);
+    }
+    public int buscarSiguienteId(){
+        List<Autoridadingresazonaveredal> ingresos = buscarIngresoAutoridad();
+        return ingresos.size()+1;
+    }
+
+    private Autoridadingresazonaveredal buscarIngresoPorAutoridad(Autoridad autoridad) {
+        List<Autoridadingresazonaveredal> ingresos = buscarIngresoAutoridad();
+        for (int i = 0; i < ingresos.size(); i++) {
+            if(ingresos.get(i).getIdAutoridad().equals(autoridad) && ingresos.get(i).getFechaSalida() == null) return ingresos.get(i);
+        }
+        return null;
+    }
+
+    public List<Autoridadingresazonaveredal> buscarPorFecha(Date fechaIngreso, Date fechaSalida) {
+        List<Autoridadingresazonaveredal> ingresos = buscarIngresoAutoridad();
+        List<Autoridadingresazonaveredal> respuesta = new ArrayList<Autoridadingresazonaveredal>();
+        for (int i = 0; i < ingresos.size(); i++) {
+            if(ingresos.get(i).getFechaIngreso().getTime() >= fechaIngreso.getTime() &&
+                    ingresos.get(i).getFechaSalida().getTime() <= fechaSalida.getTime()){
+                respuesta.add(ingresos.get(i));
+            }
+        }
+        return respuesta;
     }
 }

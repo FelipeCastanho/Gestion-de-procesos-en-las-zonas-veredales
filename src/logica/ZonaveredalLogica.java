@@ -1,6 +1,6 @@
 package logica;
 
-import java.util.ArrayList;
+import java.util.List;
 import modelo.Zonaveredal;
 import persistencia.ZonaveredalJpaController;
 
@@ -12,7 +12,14 @@ public class ZonaveredalLogica {
     public Zonaveredal buscarZonaVeredal(int id){
         return zonaveredalDAO.findZonaveredal(id);
     }
-    public ArrayList<Zonaveredal> buscarZonaVerdal(){
-        return (ArrayList<Zonaveredal>) zonaveredalDAO.findZonaveredalEntities();
+    public List<Zonaveredal> buscarZonaVerdal(){
+        return zonaveredalDAO.findZonaveredalEntities();
+    }
+    public Zonaveredal buscarZonaVeredalPorNombre(String nombre){
+        List<Zonaveredal> zonasVeredales = buscarZonaVerdal();
+        for(int i = 0; i < zonasVeredales.size(); i++){
+            if(zonasVeredales.get(i).getNombreZonaVeredal().equals(nombre)) return zonasVeredales.get(i);
+        }
+        return null;
     }
 }
